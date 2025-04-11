@@ -12,7 +12,7 @@ class NoteController extends Controller implements HasMiddleware
 {
     public static function middleware() {
         return [
-            new Middleware('auth:sanctum', except: ['index', 'show'])
+            new Middleware('auth:sanctum', except: ['index', 'show', 'showUserNotes'])
         ];
     }
 
@@ -21,8 +21,16 @@ class NoteController extends Controller implements HasMiddleware
      */
     public function index()
     {
-        return Note::all();
+        // return Note::all();
+        return Note::with('user')->latest()->get();
     }
+
+    /**
+     * Display all notes from current user
+     */
+    // public function showUserNotes(Request $request) {
+    //     return Note::all()->where('user_id', $request->user->id);
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -36,7 +44,8 @@ class NoteController extends Controller implements HasMiddleware
 
         $note = $request->user()->notes()->create($fields);
 
-        return [ 'note' => $note ];
+        // return [ 'note' => $note ];
+        return ['note' => $note, 'user' => $note->user];
     }
 
     /**
@@ -44,7 +53,8 @@ class NoteController extends Controller implements HasMiddleware
      */
     public function show(Note $note)
     {
-        return [ 'note' => $note];
+        // return [ 'note' => $note];
+        return ['note' => $note, 'user' => $note->user];
     }
 
     /**

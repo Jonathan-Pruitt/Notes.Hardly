@@ -15,6 +15,8 @@ Route::get('/', function () {
 
 Route::apiResource('notes', NoteController::class);
 
+Route::get('/my-notes', [NoteController::class, 'showUserNotes']);
+
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
