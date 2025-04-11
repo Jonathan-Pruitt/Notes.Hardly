@@ -39,7 +39,7 @@ class NoteController extends Controller implements HasMiddleware
     {
         $fields = $request->validate([
             'title' => 'required|max:255',
-            'body' => 'min:3|nullable'
+            'body' => 'min:3|nullable|max:65000'
         ]);
 
         $note = $request->user()->notes()->create($fields);

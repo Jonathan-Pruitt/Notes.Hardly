@@ -53,10 +53,11 @@ export const authStore = reactive({
                 console.error('Error:', error)
                 const err = error.response.data.errors;
                 this.errors = {
-                    name : (err.name.length > 0 ) ? err.name[0] : '',
-                    email : (err.email.length > 0 ) ? err.email[0] : '',
-                    password : (err.password.length > 0 ) ? err.password[0] : '',
+                    name : (err.name) ? err.name[0] : '',
+                    email : (err.email) ? err.email[0] : '',
+                    password : (err.password) ? err.password[0] : '',                    
                 }
+                console.log(this.errors)
             })
     },
     /******************* Logout ************************/
@@ -76,3 +77,4 @@ export const authStore = reactive({
     }
 
 })
+

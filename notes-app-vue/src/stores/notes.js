@@ -42,6 +42,7 @@ export const noteStore = reactive({
             router.push({name : 'home'})
         })
         .catch(error => {
+            console.error(error)
             this.errors = error.response.data.errors
         })
     },

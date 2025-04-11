@@ -14,16 +14,20 @@ onMounted(async () => (notes.value = await noteStore.getAllNotes()))
 <template>
   <main>
     
-    <h1 class="title">Notes Manager</h1>
+    <h1 class="font-sans text-base md:text-2xl font-bold tracking-wider py-3 md:mb-2">Notes Manager</h1>
 
-    <div v-if="notes.length > 0 && authStore.user" class="">
-      <div class="" v-for="note in notes" :key="note.id">
-        <h2>{{ note.title }}</h2>
-        <h4>Creator: {{ note.user.name }}</h4>
-        <p>
+    <div v-if="notes.length > 0 && authStore.user" class="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-4 min-h-[60dvh]">
+      <div class="min-h-[125px] max-h-[275px] relative border rounded-sm p-3 bg-yellow-100" v-for="note in notes" :key="note.id">
+        <div class="flex">
+          <h2 class="text-base md:text-xl font-bold flex-1 truncate">{{ note.title }}</h2>
+          <h4 class="text-base md:text-xl truncate">Creator: {{ note.user.name }}</h4>
+        </div>
+        <p class="max-h-8/10 truncate text-wrap text-sm md:base">
           {{ note.body }}
-          <RouterLink :to="{name: 'show', params: { id: note.id}}">Read more...</RouterLink>
         </p>
+        <div class="absolute bottom-0 right-2 text-blue-900 font-mono text-lg">
+          <RouterLink :to="{name: 'show', params: { id: note.id}}">View/Edit</RouterLink>
+        </div>
       </div>
     </div>
 
