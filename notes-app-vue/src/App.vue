@@ -50,8 +50,8 @@ onMounted(() => {
     <RouterView />
   </div>
 
-  <div class="p-5 md:p-5 bg-sky-50">
-    <h3 class="font-mono text-base md:text-xl font-bold text-violet-900">What I've Learned From This Project</h3>
+  <div class="p-5 md:p-5 bg-sky-50 inset-shadow-[2px_3px_2px_rgba(0,0,0,0.25)]">
+    <h3 class="font-mono text-lg md:text-2xl font-black tracking-wide text-violet-900">What I've Learned From This Project</h3>
     <p class="text-xs/5 md:text-base my-3">
       When beginning this project, I had no experience with <strong>PHP, Laravel, Vue, Axios, or Tailwind.</strong>
       It was a significant undertaking to try to learn these different languages/frameworks in such an expedited timeframe.
@@ -66,6 +66,6 @@ onMounted(() => {
       Something that I would want to learn more about would be how to avoid having a user's plaintext login (username/password) transmit over the network to the API, since plaintext would leave it vulnerable to MITM attacks.
       Anyways, I recognize that I still have a ways to go before I can confidently say that I understand the languages/frameworks that I used to create this project, but I now have some familiarity.      
     </p>
-    <h6 class="font-mono text-base md:text-xl font-bold text-violet-900">Jonathan Pruitt</h6>
+    <h6 class="font-mono text-lg md:text-2xl font-black tracking-wide text-violet-900">Jonathan Pruitt</h6>
   </div>
 </template>
